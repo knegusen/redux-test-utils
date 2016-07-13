@@ -1,6 +1,6 @@
 # redux-test-utils
 
-Test utils to be able to easier test containers in redux.
+Test utils to simplify testing of containers in redux.
 
 ## Install
 

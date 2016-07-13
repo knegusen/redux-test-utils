@@ -2,7 +2,7 @@
   "name": "redux-test-utils",
   "version": "0.1.0",
   "main": "lib/index.js",
-  "description": "Library providing a mock store for redux",
+  "description": "Test utils to simplify testing of containers in redux.",
   "repository": {
     "type": "git",
     "url": "https://github.com/Knegusen/redux-test-utils.git"
