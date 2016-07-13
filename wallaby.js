@@ -5,23 +5,18 @@ module.exports = function (wallaby) {
 
     var webpackPostprocessor = wallabyWebpack({
         resolve: {
-            extensions: ['', '.js', '.jsx', '.json']
+            extensions: ['', '.js', '.json']
         },
         module: {
             loaders: [
                 { test: /\.json$/, loader: 'json' }
             ]
-        },
-        externals: {
-            'react/lib/ExecutionEnvironment': true,
-            'react/lib/ReactContext': true,
-            'react/addons': true
         }
     });
 
     var babelCompiler = wallaby.compilers.babel({
         babel: require('babel-core'),
-        presets: ['es2015', 'stage-0', 'react']
+        presets: ['es2015', 'stage-0']
     });
 
     return {

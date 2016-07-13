@@ -5,11 +5,11 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
     devtool: 'source-map',
     entry: [
-        './src/App.jsx'
+        './src/index.js'
     ],
     output: {
-        path: path.join(__dirname, 'dist'),
-        filename: '[name].bundle.js'
+        path: path.join(__dirname, 'lib'),
+        filename: 'index.js'
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),

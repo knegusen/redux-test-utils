@@ -14,7 +14,7 @@ module.exports = {
                 loader: 'babel-loader',
                 include: path.join(__dirname, 'src'),
                 query: {
-                    presets: ['es2015', 'stage-0', 'react']
+                    presets: ['es2015', 'stage-0']
                 }
             },
             {
@@ -22,12 +22,7 @@ module.exports = {
                 loader: 'json'
             }]
     },
-    externals: {
-        'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': true,
-        'react/addons': true
-    },
     resolve: {
-        extensions: ['', '.js', '.jsx', '.json']
+        extensions: ['', '.js', '.json']
     }
 };
