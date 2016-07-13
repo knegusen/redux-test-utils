@@ -2,7 +2,17 @@
   "name": "redux-test-utils",
   "version": "0.1.0",
   "main": "lib/index.js",
-  "description": "",
+  "description": "Library providing a mock store for redux",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Knegusen/redux-test-utils.git"
+  },
+  "keywords": [
+    "redux",
+    "store",
+    "test"
+  ],
+  "author": "Dennis Axelsson <knegusen@gmail.com>",
   "devDependencies": {
     "babel-core": "^6.4.0",
     "babel-eslint": "^6.1.0",
@@ -36,5 +46,10 @@
     "lint": "eslint src*/**/*",
     "lint-fix": "eslint src*/**/* --fix",
     "test": "karma start karma-conf.js"
-  }
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
 }
