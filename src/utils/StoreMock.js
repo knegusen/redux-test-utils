@@ -1,4 +1,4 @@
-import { createMock } from './DispatchMock';
+import createMock from './DispatchMock';
 
 export const emptyStore = () => ({
   getState() {

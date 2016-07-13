@@ -26,5 +26,5 @@
   "plugins": [
     "jasmine"
   ],
-  "extends": "airbnb"
+  "extends": "airbnb-base"
 }
