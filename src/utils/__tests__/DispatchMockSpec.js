@@ -1,4 +1,4 @@
-import { createMock } from "../DispatchMock";
+import { createMock } from '../DispatchMock';
 
 describe('DispatchMock', () => {
   describe('getActions', () => {
@@ -26,7 +26,7 @@ describe('DispatchMock', () => {
         const mock = createMock();
         const type = 'action type';
         const action = {
-          type
+          type,
         };
         mock.dispatch(action);
         expect(mock.getAction(type)).toEqual(action);
@@ -38,7 +38,7 @@ describe('DispatchMock', () => {
         const mock = createMock();
         const type = 'action type';
         const action = {
-          type
+          type,
         };
         mock.dispatch({ type: 'random action 1' });
         mock.dispatch(action);
@@ -62,7 +62,7 @@ describe('DispatchMock', () => {
         const mock = createMock();
         const type = 'action type';
         const action = {
-          type
+          type,
         };
         mock.dispatch(action);
         expect(mock.isActionTypeDispatched(type)).toBe(true);
@@ -88,7 +88,7 @@ describe('DispatchMock', () => {
           const action = {
             type: 'type',
             field1: 'field1',
-            field2: 'field2'
+            field2: 'field2',
           };
           mock.dispatch(action);
           expect(mock.isActionDispatched(action)).toBe(true);
@@ -104,7 +104,7 @@ describe('DispatchMock', () => {
           };
           const notDispatchAction = {
             type: action.type,
-            field1: `not ${action.field1}`
+            field1: `not ${action.field1}`,
           };
           mock.dispatch(action);
           expect(mock.isActionDispatched(notDispatchAction)).toBe(false);

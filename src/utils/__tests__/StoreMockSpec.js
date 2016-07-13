@@ -1,5 +1,5 @@
-import { emptyStore, createMockStore } from "../StoreMock";
-import * as DispatchMock from "../DispatchMock";
+import { emptyStore, createMockStore } from '../StoreMock';
+import * as DispatchMock from '../DispatchMock';
 
 describe('StoreMock', () => {
   describe('emptyStore', () => {
@@ -40,7 +40,6 @@ describe('StoreMock', () => {
     });
 
     describe('dispatch', () => {
-
       it('uses dispatchMock', () => {
         const dispatch = 'dispatch function';
         spyOn(DispatchMock, 'createMock').and.returnValue({ dispatch });

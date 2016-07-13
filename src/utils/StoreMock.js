@@ -1,8 +1,8 @@
-import { createMock } from "./DispatchMock";
+import { createMock } from './DispatchMock';
 
 export const emptyStore = () => ({
-  getState(){
-    return {}
+  getState() {
+    return {};
   },
   subscribe() {
   },
@@ -23,5 +23,5 @@ export const createMockStore = (state = {}) => {
     getAction: dispatchMock.getAction,
     isActionDispatched: dispatchMock.isActionDispatched,
     isActionTypeDispatched: dispatchMock.isActionTypeDispatched,
-  }
+  };
 };

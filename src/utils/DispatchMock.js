@@ -42,6 +42,6 @@ export const createMock = () => {
         }
       }
       return false;
-    }
+    },
   };
 };

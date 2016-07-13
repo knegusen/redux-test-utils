@@ -1,5 +1,5 @@
-import { createMockStore } from "../index";
-import * as StoreMock from "../utils/StoreMock";
+import { createMockStore } from '../index';
+import * as StoreMock from '../utils/StoreMock';
 
 describe('createStore', () => {
   it('works', () => {
@@ -15,7 +15,7 @@ describe('createStore', () => {
       const store = createMockStore(state);
       const action = {
         type: 'type',
-        data: 'data'
+        data: 'data',
       };
       store.dispatch(action);
 
