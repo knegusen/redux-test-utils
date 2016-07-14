@@ -14,6 +14,8 @@ $ npm install redux-test-utils --save-dev
 
 ```js
 
+import { createMockStore } from 'redux-test-utils';
+
 describe('example', () => {
   it('works', () => {
     const state = 'state';
