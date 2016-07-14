@@ -43,7 +43,6 @@
     "clean": "rimraf lib",
     "publish:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "prepublish": "npm run clean && npm run publish:webpack",
-    "start": "node devServer.js",
     "lint": "eslint src*/**/*",
     "lint-fix": "eslint src*/**/* --fix",
     "test": "karma start karma-conf.js"
