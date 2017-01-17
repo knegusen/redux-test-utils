@@ -1,4 +1,4 @@
-const createMock = () => {
+export const createMockDispatch = () => {
   const actions = [];
   return {
     dispatch(action) {
@@ -45,5 +45,3 @@ const createMock = () => {
     },
   };
 };
-
-export default createMock;

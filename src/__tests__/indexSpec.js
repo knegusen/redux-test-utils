@@ -1,5 +1,6 @@
-import { createMockStore } from '../index';
+import { createMockStore, createMockDispatch } from '../index';
 import * as StoreMock from '../utils/StoreMock';
+import * as DispatchMock from '../utils/DispatchMock';
 
 describe('createStore', () => {
   it('works', () => {
@@ -24,6 +25,32 @@ describe('createStore', () => {
       expect(store.isActionDispatched(action)).toBe(true);
       expect(store.isActionTypeDispatched(action.type)).toBe(true);
       expect(store.getState()).toBe(state);
+    });
+  });
+});
+
+describe('createMockDispatch', () => {
+  it('works', () => {
+    spyOn(DispatchMock, 'createMockDispatch');
+    const state = 'state';
+    createMockDispatch();
+    expect(DispatchMock.createMockDispatch).toHaveBeenCalledWith();
+  });
+
+  describe('example', () => {
+    it('works', () => {
+      const state = 'state';
+      const dispatchMock = createMockDispatch();
+      const action = {
+        type: 'type',
+        data: 'data',
+      };
+      dispatchMock.dispatch(action);
+
+      expect(dispatchMock.getAction(action.type)).toEqual(action);
+      expect(dispatchMock.getActions()).toEqual([action]);
+      expect(dispatchMock.isActionDispatched(action)).toBe(true);
+      expect(dispatchMock.isActionTypeDispatched(action.type)).toBe(true);
     });
   });
 });

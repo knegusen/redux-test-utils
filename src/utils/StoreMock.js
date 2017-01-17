@@ -1,4 +1,4 @@
-import createMock from './DispatchMock';
+import { createMockDispatch } from './DispatchMock';
 
 export const emptyStore = () => ({
   getState() {
@@ -9,7 +9,7 @@ export const emptyStore = () => ({
 });
 
 export const createMockStore = (state = {}) => {
-  const dispatchMock = createMock();
+  const dispatchMock = createMockDispatch();
 
   return {
     getState() {

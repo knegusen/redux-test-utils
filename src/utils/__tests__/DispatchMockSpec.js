@@ -1,9 +1,9 @@
-import createMock from '../DispatchMock';
+import { createMockDispatch } from '../DispatchMock';
 
 describe('DispatchMock', () => {
   describe('getActions', () => {
     it('returns all dispatched actions', () => {
-      const mock = createMock();
+      const mock = createMockDispatch();
       const action1 = 'action1';
       const action2 = 'action2';
       mock.dispatch(action1);
@@ -16,14 +16,14 @@ describe('DispatchMock', () => {
   describe('getAction', () => {
     describe('when action is not dispatched', () => {
       it('returns undefined', () => {
-        const mock = createMock();
+        const mock = createMockDispatch();
         expect(mock.getAction('action name')).toBe(undefined);
       });
     });
 
     describe('when action is dispatched', () => {
       it('is returned', () => {
-        const mock = createMock();
+        const mock = createMockDispatch();
         const type = 'action type';
         const action = {
           type,
@@ -35,7 +35,7 @@ describe('DispatchMock', () => {
 
     describe('when several actions is dispatched', () => {
       it('returns action with given type', () => {
-        const mock = createMock();
+        const mock = createMockDispatch();
         const type = 'action type';
         const action = {
           type,
@@ -52,14 +52,14 @@ describe('DispatchMock', () => {
   describe('isActionTypeDispatched', () => {
     describe('when action has not been dispatched', () => {
       it('returns false', () => {
-        const mock = createMock();
+        const mock = createMockDispatch();
         expect(mock.isActionTypeDispatched('not dispatched action type')).toBe(false);
       });
     });
 
     describe('when actions has been dispatched', () => {
       it('returns true', () => {
-        const mock = createMock();
+        const mock = createMockDispatch();
         const type = 'action type';
         const action = {
           type,
@@ -73,7 +73,7 @@ describe('DispatchMock', () => {
   describe('isActionDispatched', () => {
     describe('when actions has not been dispatched', () => {
       it('returns false', () => {
-        const mock = createMock();
+        const mock = createMockDispatch();
         const action = {
           type: 'not dispatched action type',
         };
@@ -84,7 +84,7 @@ describe('DispatchMock', () => {
     describe('when action has been dispatched', () => {
       describe('and all fields in action matches', () => {
         it('returns true', () => {
-          const mock = createMock();
+          const mock = createMockDispatch();
           const action = {
             type: 'type',
             field1: 'field1',
@@ -97,7 +97,7 @@ describe('DispatchMock', () => {
 
       describe('and not all fields in action matches', () => {
         it('returns false', () => {
-          const mock = createMock();
+          const mock = createMockDispatch();
           const action = {
             type: 'type',
             field1: 'field1',
