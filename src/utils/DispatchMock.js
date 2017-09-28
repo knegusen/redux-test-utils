@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 export const createMockDispatch = () => {
   const actions = [];
   return {
@@ -10,7 +11,7 @@ export const createMockDispatch = () => {
     },
 
     getAction(type) {
-      for (let i = 0; i < actions.length; i++) {
+      for (let i = 0; i < actions.length; i += 1) {
         if (actions[i].type === type) {
           return actions[i];
         }
@@ -19,7 +20,7 @@ export const createMockDispatch = () => {
     },
 
     isActionTypeDispatched(type) {
-      for (let i = 0; i < actions.length; i++) {
+      for (let i = 0; i < actions.length; i += 1) {
         if (actions[i].type === type) {
           return true;
         }
@@ -28,7 +29,7 @@ export const createMockDispatch = () => {
     },
 
     isActionDispatched(action) {
-      for (let i = 0; i < actions.length; i++) {
+      for (let i = 0; i < actions.length; i += 1) {
         if (actions[i].type === action.type) {
           let equalActions = true;
           Object.keys(action).forEach((key) => {

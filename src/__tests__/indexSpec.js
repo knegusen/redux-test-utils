@@ -32,14 +32,12 @@ describe('createStore', () => {
 describe('createMockDispatch', () => {
   it('works', () => {
     spyOn(DispatchMock, 'createMockDispatch');
-    const state = 'state';
     createMockDispatch();
     expect(DispatchMock.createMockDispatch).toHaveBeenCalledWith();
   });
 
   describe('example', () => {
     it('works', () => {
-      const state = 'state';
       const dispatchMock = createMockDispatch();
       const action = {
         type: 'type',
