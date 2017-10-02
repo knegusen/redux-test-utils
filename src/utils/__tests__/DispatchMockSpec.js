@@ -83,15 +83,51 @@ describe('DispatchMock', () => {
 
     describe('when action has been dispatched', () => {
       describe('and all fields in action matches', () => {
-        it('returns true', () => {
-          const mock = createMockDispatch();
-          const action = {
-            type: 'type',
-            field1: 'field1',
-            field2: 'field2',
-          };
-          mock.dispatch(action);
-          expect(mock.isActionDispatched(action)).toBe(true);
+        describe('when all subFields matches', () => {
+          it('returns true', () => {
+            const mock = createMockDispatch();
+            const action = {
+              type: 'type',
+              field1: {
+                subField1: 'subField1',
+                subField2: 'subField2',
+              },
+              field2: 'field2',
+            };
+            const expectedAction = {
+              type: 'type',
+              field1: {
+                subField1: 'subField1',
+                subField2: 'subField2',
+              },
+              field2: 'field2',
+            };
+            mock.dispatch(action);
+            expect(mock.isActionDispatched(expectedAction)).toBe(true);
+          });
+        });
+
+        describe('when all subFields does not match', () => {
+          it('returns false', () => {
+            const mock = createMockDispatch();
+            const action = {
+              type: 'type',
+              field1: {
+                subField1: 'subField1',
+                subField2: 'subField2',
+              },
+              field2: 'field2',
+            };
+            const expectedAction = {
+              type: 'type',
+              field1: {
+                subField3: 'subField3',
+              },
+              field2: 'field2',
+            };
+            mock.dispatch(action);
+            expect(mock.isActionDispatched(expectedAction)).toBe(false);
+          });
         });
       });
 
