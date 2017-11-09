@@ -1,4 +1,4 @@
-# redux-test-utils
+# redux-test-utils [![Build Status](https://travis-ci.org/knegusen/redux-test-utils.svg?branch=master)](https://travis-ci.org/knegusen/redux-test-utils)
 
 Test utils to simplify testing of containers in redux.
 
