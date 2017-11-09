@@ -1,4 +1,6 @@
 /* eslint-disable import/prefer-default-export */
+import equals from './equals';
+
 export const createMockDispatch = () => {
   const actions = [];
   return {
@@ -31,13 +33,7 @@ export const createMockDispatch = () => {
     isActionDispatched(action) {
       for (let i = 0; i < actions.length; i += 1) {
         if (actions[i].type === action.type) {
-          let equalActions = true;
-          Object.keys(action).forEach((key) => {
-            if (actions[i][key] !== action[key]) {
-              equalActions = false;
-            }
-          });
-          if (equalActions) {
+          if (equals(actions[i], action)) {
             return true;
           }
         }
