@@ -88,12 +88,18 @@ describe('equals', () => {
             b: {
               c: 'c',
             },
+            d: {
+              e: null,
+            },
           },
         };
         const object2 = {
           a: {
             b: {
               c: 'c',
+            },
+            d: {
+              e: null,
             },
           },
         };
@@ -109,12 +115,18 @@ describe('equals', () => {
           b: {
             c: 'c',
           },
+          d: {
+            e: null,
+          },
         },
       };
       const object2 = {
         a: {
           b: {
             d: 'd',
+          },
+          d: {
+            e: null,
           },
         },
       };
