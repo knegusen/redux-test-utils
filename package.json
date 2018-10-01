@@ -57,5 +57,8 @@
     "printWidth": 100,
     "singleQuote": true,
     "trailingComma": "all"
+  },
+  "dependencies": {
+    "fast-deep-equal": "^2.0.1"
   }
 }

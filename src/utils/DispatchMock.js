@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import equals from './equals';
+import deepEqual from 'fast-deep-equal';
 
 export const createMockDispatch = () => {
   const actions = [];
@@ -33,7 +33,7 @@ export const createMockDispatch = () => {
     isActionDispatched(action) {
       for (let i = 0; i < actions.length; i += 1) {
         if (actions[i].type === action.type) {
-          if (equals(actions[i], action)) {
+          if (deepEqual(actions[i], action)) {
             return true;
           }
         }
