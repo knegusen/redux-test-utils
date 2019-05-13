@@ -2,7 +2,7 @@
 import deepEqual from 'fast-deep-equal';
 
 export const createMockDispatch = () => {
-  const actions = [];
+  let actions = [];
   return {
     dispatch(action) {
       actions.push(action);
@@ -39,6 +39,10 @@ export const createMockDispatch = () => {
         }
       }
       return false;
+    },
+
+    flushActions() {
+      actions = [];
     },
   };
 };

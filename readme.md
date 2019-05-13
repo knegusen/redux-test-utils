@@ -15,7 +15,6 @@ $ npm install redux-test-utils --save-dev
 ### createMockStore
 
 ```js
-
 import { createMockStore } from 'redux-test-utils';
 
 describe('example', () => {
@@ -24,24 +23,23 @@ describe('example', () => {
     const store = createMockStore(state);
     const action = {
       type: 'type',
-      data: 'data'
+      data: 'data',
     };
     store.dispatch(action);
-    
+
     expect(store.getAction(action.type)).toEqual(action);
     expect(store.getActions()).toEqual([action]);
     expect(store.isActionDispatched(action)).toBe(true);
     expect(store.isActionTypeDispatched(action.type)).toBe(true);
     expect(store.getState()).toBe(state);
+    store.flushActions();
   });
 });
-
 ```
 
 ### createMockDispatch
 
 ```js
-
 import { createMockDispatch } from 'redux-test-utils';
 
 describe('example', () => {
@@ -58,7 +56,7 @@ describe('example', () => {
     expect(dispatchMock.getActions()).toEqual([action]);
     expect(dispatchMock.isActionDispatched(action)).toBe(true);
     expect(dispatchMock.isActionTypeDispatched(action.type)).toBe(true);
+    dispatchMock.flushActions();
   });
 });
-
 ```

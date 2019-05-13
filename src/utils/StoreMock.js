@@ -23,5 +23,6 @@ export const createMockStore = (state = {}) => {
     getAction: dispatchMock.getAction,
     isActionDispatched: dispatchMock.isActionDispatched,
     isActionTypeDispatched: dispatchMock.isActionTypeDispatched,
+    flushActions: dispatchMock.flushActions,
   };
 };

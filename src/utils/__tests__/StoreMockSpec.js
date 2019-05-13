@@ -84,6 +84,15 @@ describe('StoreMock', () => {
           expect(store.isActionDispatched).toBe(isActionDispatched);
         });
       });
+
+      describe('flushActions', () => {
+        it('uses dispatchMock', () => {
+          const flushActions = 'flushActions function';
+          DispatchMock.createMockDispatch = jest.fn().mockReturnValueOnce({ flushActions });
+          const store = createMockStore();
+          expect(store.flushActions).toBe(flushActions);
+        });
+      });
     });
   });
 });

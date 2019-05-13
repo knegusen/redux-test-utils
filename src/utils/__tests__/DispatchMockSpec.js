@@ -148,4 +148,15 @@ describe('DispatchMock', () => {
       });
     });
   });
+
+  describe('flushActions', () => {
+    it('should return no actions', () => {
+      const mock = createMockDispatch();
+      const action = 'action1';
+      mock.dispatch(action);
+      mock.flushActions();
+      expect(mock.getActions()).toEqual([]);
+      expect(mock.isActionDispatched(action)).toBe(false);
+    });
+  });
 });
