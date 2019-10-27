@@ -1,7 +1,6 @@
 {
   "env": {
     "browser": true,
-    "jasmine": true,
     "jest": true
   },
   "extends": "plugin:@typescript-eslint/recommended",
