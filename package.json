@@ -1,11 +1,11 @@
 {
   "name": "redux-test-utils",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "files": [
     "dist"
   ],
-  "description": "Test utils to simplify testing of containers in redux.",
+  "description": "Test utils to simplify mocking for redux.",
   "engines": {
     "node": ">=8"
   },
@@ -14,14 +14,14 @@
     "url": "https://github.com/Knegusen/redux-test-utils.git"
   },
   "keywords": [
+    "dispatch",
     "redux",
     "store",
     "test"
   ],
   "author": "Dennis Axelsson <knegusen@gmail.com>",
   "dependencies": {
-    "fast-deep-equal": "^2.0.1",
-    "typescript": "^3.6.4"
+    "fast-deep-equal": "^2.0.1"
   },
   "peerDependencies": {
     "redux": "^4.0.4"
@@ -39,7 +39,8 @@
     "np": "^5.0.3",
     "prettier": "^1.18.2",
     "redux": "^4.0.4",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.6.3",
+    "typescript": "^3.6.4"
   },
   "scripts": {
     "clean": "rimraf dist",
