@@ -19,6 +19,7 @@
     "store",
     "test"
   ],
+  "types": "./dist/index.d.ts",
   "author": "Dennis Axelsson <knegusen@gmail.com>",
   "dependencies": {
     "fast-deep-equal": "^2.0.1"
