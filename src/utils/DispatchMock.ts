@@ -1,18 +1,27 @@
-/* eslint-disable import/prefer-default-export */
 import deepEqual from 'fast-deep-equal';
+import { AnyAction, Dispatch } from 'redux';
 
-export const createMockDispatch = () => {
-  const actions = [];
+export interface MockDispatch<T extends AnyAction> {
+  dispatch: Dispatch<T>;
+  getActions: () => AnyAction[];
+  getAction: (type: any) => AnyAction | undefined;
+  isActionTypeDispatched: (type: any) => boolean;
+  isActionDispatched: (action: AnyAction) => boolean;
+}
+
+export const createMockDispatch = <T extends AnyAction>(): MockDispatch<T> => {
+  const actions: AnyAction[] = [];
   return {
-    dispatch(action) {
+    dispatch<A extends T>(action: A): A {
       actions.push(action);
+      return action;
     },
 
-    getActions() {
+    getActions(): AnyAction[] {
       return actions;
     },
 
-    getAction(type) {
+    getAction(type): AnyAction | undefined {
       for (let i = 0; i < actions.length; i += 1) {
         if (actions[i].type === type) {
           return actions[i];
@@ -21,7 +30,7 @@ export const createMockDispatch = () => {
       return undefined;
     },
 
-    isActionTypeDispatched(type) {
+    isActionTypeDispatched(type): boolean {
       for (let i = 0; i < actions.length; i += 1) {
         if (actions[i].type === type) {
           return true;
@@ -30,7 +39,7 @@ export const createMockDispatch = () => {
       return false;
     },
 
-    isActionDispatched(action) {
+    isActionDispatched(action): boolean {
       for (let i = 0; i < actions.length; i += 1) {
         if (actions[i].type === action.type) {
           if (deepEqual(actions[i], action)) {

@@ -1,5 +1,5 @@
-import { emptyStore, createMockStore } from '../StoreMock';
 import * as DispatchMock from '../DispatchMock';
+import { createMockStore, emptyStore } from '../StoreMock';
 
 describe('StoreMock', () => {
   describe('emptyStore', () => {
@@ -22,7 +22,7 @@ describe('StoreMock', () => {
     describe('state', () => {
       describe('when not provided', () => {
         it('returns empty object', () => {
-          expect(createMockStore().getState()).toEqual({});
+          expect(createMockStore({}).getState()).toEqual({});
         });
       });
       describe('when provided', () => {
@@ -34,24 +34,32 @@ describe('StoreMock', () => {
     });
 
     describe('subscribe', () => {
-      it('is defined', () => {
-        expect(typeof createMockStore().subscribe).toBe('function');
+      it('works', () => {
+        const subscriber = jest.fn();
+        const mockStore = createMockStore({});
+        mockStore.subscribe(subscriber);
+        const action = { type: 'action' };
+        mockStore.dispatch(action);
+        expect(subscriber).toHaveBeenCalled();
       });
     });
 
     describe('dispatch', () => {
       it('uses dispatchMock', () => {
-        const dispatch = 'dispatch function';
+        const dispatch = jest.fn();
+        // @ts-ignore
         DispatchMock.createMockDispatch = jest.fn().mockReturnValueOnce({ dispatch });
-        const store = createMockStore();
-        expect(store.dispatch).toBe(dispatch);
+        const store = createMockStore({});
+        store.dispatch({ type: '' });
+        expect(dispatch).toHaveBeenCalled();
       });
 
       describe('getDispatchActions', () => {
         it('uses dispatchMock', () => {
           const getActions = 'getActions function';
+          // @ts-ignore
           DispatchMock.createMockDispatch = jest.fn().mockReturnValueOnce({ getActions });
-          const store = createMockStore();
+          const store = createMockStore({});
           expect(store.getActions).toBe(getActions);
         });
       });
@@ -59,8 +67,9 @@ describe('StoreMock', () => {
       describe('getDispatchAction', () => {
         it('uses dispatchMock', () => {
           const getAction = 'getAction function';
+          // @ts-ignore
           DispatchMock.createMockDispatch = jest.fn().mockReturnValueOnce({ getAction });
-          const store = createMockStore();
+          const store = createMockStore({});
           expect(store.getAction).toBe(getAction);
         });
       });
@@ -68,10 +77,11 @@ describe('StoreMock', () => {
       describe('isActionTypeDispatched', () => {
         it('uses dispatchMock', () => {
           const isActionTypeDispatched = 'isActionTypeDispatched function';
+          // @ts-ignore
           DispatchMock.createMockDispatch = jest
             .fn()
             .mockReturnValueOnce({ isActionTypeDispatched });
-          const store = createMockStore();
+          const store = createMockStore({});
           expect(store.isActionTypeDispatched).toBe(isActionTypeDispatched);
         });
       });
@@ -79,8 +89,9 @@ describe('StoreMock', () => {
       describe('isActionDispatched', () => {
         it('uses dispatchMock', () => {
           const isActionDispatched = 'isActionTypeDispatched function';
+          // @ts-ignore
           DispatchMock.createMockDispatch = jest.fn().mockReturnValueOnce({ isActionDispatched });
-          const store = createMockStore();
+          const store = createMockStore({});
           expect(store.isActionDispatched).toBe(isActionDispatched);
         });
       });

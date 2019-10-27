@@ -19,28 +19,41 @@
     "test"
   ],
   "author": "Dennis Axelsson <knegusen@gmail.com>",
+  "dependencies": {
+    "fast-deep-equal": "^2.0.1",
+    "typescript": "^3.6.4"
+  },
+  "peerDependencies": {
+    "redux": "^4.0.4"
+  },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/jest": "^24.0.20",
+    "@typescript-eslint/eslint-plugin": "^2.5.0",
+    "@typescript-eslint/parser": "^2.5.0",
     "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
     "enzyme": "^3.10.0",
-    "eslint": "^6.0.1",
+    "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.18.0",
     "jest": "^24.8.0",
     "np": "^5.0.3",
     "prettier": "^1.18.2",
+    "redux": "^4.0.4",
     "rimraf": "^2.6.3"
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && babel src --out-dir dist --ignore **/__tests__/**",
-    "prepublish": "npm run build",
-    "lint": "eslint --ext .jsx,.js src",
-    "lint-fix": "eslint --ext .jsx,.js src --fix",
-    "test": "npm run lint && jest"
+    "build-js": "yarn clean && babel src --out-dir dist --ignore **/__tests__/**",
+    "build": "yarn clean && yarn tsc",
+    "prepublish": "yarn build",
+    "lint": "eslint './src/**/*.ts*'",
+    "lint-fix": "eslint './src/**/*.ts*' --fix",
+    "test": "yarn lint && jest"
   },
   "licenses": [
     {
@@ -49,15 +62,13 @@
   ],
   "babel": {
     "presets": [
-      "@babel/preset-env"
+      "@babel/preset-env",
+      "@babel/preset-typescript"
     ]
   },
   "prettier": {
     "printWidth": 100,
     "singleQuote": true,
     "trailingComma": "all"
-  },
-  "dependencies": {
-    "fast-deep-equal": "^2.0.1"
   }
 }

@@ -1,11 +1,16 @@
+import { AnyAction } from 'redux';
 import { createMockDispatch } from '../DispatchMock';
 
 describe('DispatchMock', () => {
   describe('getActions', () => {
     it('returns all dispatched actions', () => {
       const mock = createMockDispatch();
-      const action1 = 'action1';
-      const action2 = 'action2';
+      const action1: AnyAction = {
+        type: 'action1',
+      };
+      const action2: AnyAction = {
+        type: 'action2',
+      };
       mock.dispatch(action1);
       mock.dispatch(action2);
 

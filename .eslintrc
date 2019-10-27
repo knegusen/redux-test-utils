@@ -4,6 +4,6 @@
     "jasmine": true,
     "jest": true
   },
-  "extends": "airbnb-base",
-  "parser": "babel-eslint"
+  "extends": "plugin:@typescript-eslint/recommended",
+  "parser": "@typescript-eslint/parser"
 }
