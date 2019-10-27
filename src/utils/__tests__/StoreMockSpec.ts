@@ -1,6 +1,26 @@
 import * as DispatchMock from '../DispatchMock';
 import { createMockStore, emptyStore } from '../StoreMock';
 
+const dispatch = jest.fn();
+const getActions = jest.fn();
+const getAction = jest.fn();
+const isActionDispatched = jest.fn();
+const isActionTypeDispatched = jest.fn();
+
+beforeEach(() => {
+  jest.spyOn(DispatchMock, 'createMockDispatch').mockReturnValue({
+    dispatch,
+    getActions,
+    getAction,
+    isActionDispatched,
+    isActionTypeDispatched,
+  });
+});
+
+afterEach(() => {
+  jest.resetAllMocks();
+});
+
 describe('StoreMock', () => {
   describe('emptyStore', () => {
     const store = emptyStore();
@@ -46,9 +66,6 @@ describe('StoreMock', () => {
 
     describe('dispatch', () => {
       it('uses dispatchMock', () => {
-        const dispatch = jest.fn();
-        // @ts-ignore
-        DispatchMock.createMockDispatch = jest.fn().mockReturnValueOnce({ dispatch });
         const store = createMockStore({});
         store.dispatch({ type: '' });
         expect(dispatch).toHaveBeenCalled();
@@ -56,9 +73,6 @@ describe('StoreMock', () => {
 
       describe('getDispatchActions', () => {
         it('uses dispatchMock', () => {
-          const getActions = 'getActions function';
-          // @ts-ignore
-          DispatchMock.createMockDispatch = jest.fn().mockReturnValueOnce({ getActions });
           const store = createMockStore({});
           expect(store.getActions).toBe(getActions);
         });
@@ -66,9 +80,6 @@ describe('StoreMock', () => {
 
       describe('getDispatchAction', () => {
         it('uses dispatchMock', () => {
-          const getAction = 'getAction function';
-          // @ts-ignore
-          DispatchMock.createMockDispatch = jest.fn().mockReturnValueOnce({ getAction });
           const store = createMockStore({});
           expect(store.getAction).toBe(getAction);
         });
@@ -76,11 +87,6 @@ describe('StoreMock', () => {
 
       describe('isActionTypeDispatched', () => {
         it('uses dispatchMock', () => {
-          const isActionTypeDispatched = 'isActionTypeDispatched function';
-          // @ts-ignore
-          DispatchMock.createMockDispatch = jest
-            .fn()
-            .mockReturnValueOnce({ isActionTypeDispatched });
           const store = createMockStore({});
           expect(store.isActionTypeDispatched).toBe(isActionTypeDispatched);
         });
@@ -88,9 +94,6 @@ describe('StoreMock', () => {
 
       describe('isActionDispatched', () => {
         it('uses dispatchMock', () => {
-          const isActionDispatched = 'isActionTypeDispatched function';
-          // @ts-ignore
-          DispatchMock.createMockDispatch = jest.fn().mockReturnValueOnce({ isActionDispatched });
           const store = createMockStore({});
           expect(store.isActionDispatched).toBe(isActionDispatched);
         });
