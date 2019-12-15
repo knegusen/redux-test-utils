@@ -33,6 +33,20 @@ describe('DispatchMock', () => {
       });
     });
 
+    describe('when an action creator returns a thunk', () => {
+      it('executes the thunk', () => {
+        const mock = createMockDispatch();
+        const action = (dispatch) => {
+          dispatch({ type: 'action type' });
+          dispatch({ type: 'action type 2' });
+        };
+
+        mock.dispatch(action);
+        expect(mock.isActionTypeDispatched('action type')).toBe(true);
+        expect(mock.isActionTypeDispatched('action type 2')).toBe(true);
+      });
+    });
+
     describe('when several actions is dispatched', () => {
       it('returns action with given type', () => {
         const mock = createMockDispatch();

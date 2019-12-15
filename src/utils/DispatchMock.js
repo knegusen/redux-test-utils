@@ -3,9 +3,17 @@ import deepEqual from 'fast-deep-equal';
 
 export const createMockDispatch = () => {
   const actions = [];
+  const logAction = (action) => {
+    actions.push(action);
+  };
+
   return {
     dispatch(action) {
-      actions.push(action);
+      if (action instanceof Function) {
+        action(logAction);
+      } else {
+        logAction(action);
+      }
     },
 
     getActions() {
