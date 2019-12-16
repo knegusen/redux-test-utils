@@ -10,10 +10,10 @@ export const createMockDispatch = () => {
   return {
     dispatch(action) {
       if (action instanceof Function) {
-        action(logAction);
-      } else {
-        logAction(action);
+        return action(logAction);
       }
+
+      return logAction(action);
     },
 
     getActions() {

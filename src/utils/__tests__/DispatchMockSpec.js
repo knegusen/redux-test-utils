@@ -45,6 +45,29 @@ describe('DispatchMock', () => {
         expect(mock.isActionTypeDispatched('action type')).toBe(true);
         expect(mock.isActionTypeDispatched('action type 2')).toBe(true);
       });
+
+      it('returns the result of the thunk from dispatch', (done) => {
+        const mock = createMockDispatch();
+        const action = (dispatch) => {
+          dispatch({ type: 'action type' });
+
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              dispatch({ type: 'action type 2' });
+              resolve('final return value');
+            }, 10);
+          });
+        };
+
+        mock.dispatch(action)
+          .then((res) => {
+            expect(mock.isActionTypeDispatched('action type')).toBe(true);
+            expect(mock.isActionTypeDispatched('action type 2')).toBe(true);
+            expect(res).toEqual('final return value');
+            done();
+          })
+          .catch(done);
+      });
     });
 
     describe('when several actions is dispatched', () => {
