@@ -15,7 +15,9 @@ export const emptyStore = (): Omit<Store<{}, AnyAction>, 'Symbol.observable'> =>
     return {};
   },
   subscribe(): () => void {
-    return (): void => {};
+    return (): void => {
+      // Dummy
+    };
   },
   replaceReducer(): void {
     // Dummy
